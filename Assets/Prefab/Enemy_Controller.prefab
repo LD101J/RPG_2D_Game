@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3485747152423439202}
   - component: {fileID: 6259886608643956958}
   - component: {fileID: 2264217603746540038}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Enemy_Controller
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 187723581
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -670165220, guid: 0a1ee3945d9c01d4891df98155302b71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
