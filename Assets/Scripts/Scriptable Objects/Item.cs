@@ -9,7 +9,7 @@ namespace RPG_Animation_Game
     {
         [SerializeField] private string objectName;
         [SerializeField] private Sprite sprite;
-        [SerializeField] private int quantity;
+        public int quantity;
         [SerializeField] private bool stackable;
         public enum ItemType
         {
