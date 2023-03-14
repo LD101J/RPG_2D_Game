@@ -6,9 +6,9 @@ namespace RPG_Animation_Game
 {
     public class Character_Doubleclick : MonoBehaviour
     {
-        public int hitPoints;
-        public int maxHitPoints;
-
+        public Hit_Points hitPoints;
+        public float maxHitPoints;
+        public float startingHitPoints;
     }
 
 
