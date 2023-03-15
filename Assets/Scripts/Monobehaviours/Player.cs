@@ -1,59 +1,66 @@
-//using System;
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using RPG_Animation_Game;
-//     public class Player : Character_Doubleclick
-//    {
-//        HealthBar healthBar;
-//        public HealthBar healthBar;
-//        public GameObject healthBarPrefab;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//        hitPoints.value = startingHitPoints;
-            
+namespace RPG_Animation_Game
+{
+    public class Player : Character_Doubleclick
+    {
+        public GameObject healthBarPrefab;
+        public bool shouldDissapear;
+        //public Inventory invetoryPrefab;
 
-//            private void Start()
-//        {
-//        healthBarPrefab = Instantiate(healthBarPrefab);
-//        }
-//        private void OnTriggerEnter2D(Collider2D collision)
-//        {
-//            if (collision.gameObject.CompareTag("CanBePickedUp"))
-//            {
-//            Item hitObject = collision.gameObject.GetComponent<Consumable>().item;
+        public Health_Bar healthBarStore;
+        Health_Bar healthBar;
+        //Inventory inventory; 
 
-//            if (hitObject != null)
-//                {
-//                bool shouldDissapear = false;
-                
-//                }
-//                switch (hitObject.itemType)
-//                {
-//                    case Item.ItemType.COIN:
-//                    shouldDissapear = true;
-//                        break;
+        private void Start()
+        {
+            healthBar = Instantiate(healthBarStore);
+            healthBar.character = this;
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("CanBePickedUp"))
+            {
+                Item hitObject = collision.gameObject.GetComponent<Consumable>().item;
 
-//                    case Item.ItemType.HEALTH:
-//                        AdjustHitPoints(hitObject.quantity);
-//                        break;
+                if (hitObject != null)
+                {
+                    shouldDissapear = false;
+                    //bool shouldDissapear = false;
 
-//                    default:
-//                        break;
-//                }
-//            if (shouldDissapear)
-//            {
-//                collision.gameObject.SetActive(false);
-//            }
-//            }
-//        }
+                }
+                switch (hitObject.itemType)
+                {
+                    case Item.ItemType.COIN:
+                        shouldDissapear = true;
+                        break;
 
-//        public bool AdjustHitPoints(int amount)
-//        {
-//        if(hitPoints.value < maxHitPoints)
-//        {
-//            hitPoints.value = hitPoints.value + amount;
-//            print("Adjusted hitpoints by : " + amount + ". New value: " + hitPoints);
-//        }
-//        return true;
-//        }
-//    }
+                    case Item.ItemType.HEALTH:
+                        AdjustHitPoints(hitObject.quantity);
+                        break;
+
+                    default:
+                        break;
+                }
+                if (shouldDissapear)
+                {
+                    collision.gameObject.SetActive(false);
+                }
+            }
+        }
+
+
+        public bool AdjustHitPoints(int amount)
+        {
+            if (hitPoints.value < maxHitPoints)
+            {
+                hitPoints.value = hitPoints.value + amount;
+                print("Adjusted hitpoints by : " + amount + ". New value: " + hitPoints);
+            }
+            return true;
+        }
+    }
+}

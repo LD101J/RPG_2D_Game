@@ -9,6 +9,7 @@ namespace RPG_Animation_Game
         public Hit_Points hitPoints;
         public float maxHitPoints;
         public float startingHitPoints;
+        //public bool shouldDissapear;
     }
 
 
