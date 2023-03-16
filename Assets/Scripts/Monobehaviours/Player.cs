@@ -7,18 +7,28 @@ namespace RPG_Animation_Game
 {
     public class Player : Character_Doubleclick
     {
-        public GameObject healthBarPrefab;
+        #region Variables for health
+        public GameObject healthBarStore;
         public bool shouldDissapear;
-        //public Inventory invetoryPrefab;
-
-        public Health_Bar healthBarStore;
+        public Health_Bar healthBarPrefab;
         Health_Bar healthBar;
-        //Inventory inventory; 
-
+        #endregion
+        #region Variables for inventory
+        public Inventory inventoryPrefab;
+        Inventory inventory;
+        #endregion 
         private void Start()
         {
-            healthBar = Instantiate(healthBarStore);
+            #region Inventory section
+            inventory = Instantiate(inventoryPrefab);
+            hitPoints.value = startingHitPoints;
+            healthBar = Instantiate(healthBarPrefab);
             healthBar.character = this;
+            #endregion
+            #region Health functions
+            healthBar = Instantiate(healthBarPrefab);
+            healthBar.character = this;
+            #endregion
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -35,11 +45,12 @@ namespace RPG_Animation_Game
                 switch (hitObject.itemType)
                 {
                     case Item.ItemType.COIN:
+                        shouldDissapear = inventory.AddItem(hitObject);
                         shouldDissapear = true;
                         break;
 
                     case Item.ItemType.HEALTH:
-                        AdjustHitPoints(hitObject.quantity);
+                        shouldDissapear = AdjustHitPoints(hitObject.quantity);
                         break;
 
                     default:
