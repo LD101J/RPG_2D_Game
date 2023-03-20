@@ -8,9 +8,9 @@ namespace RPG_Animation_Game
     public class Item : ScriptableObject
     {
         [SerializeField] private string objectName;
-        [SerializeField] private Sprite sprite;
+        public Sprite sprite;
         public int quantity;
-        [SerializeField] private bool stackable;
+        public bool stackable;
         public enum ItemType
         {
             COIN,

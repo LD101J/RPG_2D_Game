@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8496720199473558076
 Transform:
   m_ObjectHideFlags: 0
@@ -186,6 +186,7 @@ MonoBehaviour:
   hitPoints: {fileID: 11400000, guid: ef633b0c266a39c4ca59e7674c2dc8e4, type: 2}
   maxHitPoints: 6
   startingHitPoints: 10
-  healthBarPrefab: {fileID: 0}
+  healthBar: {fileID: 6619672300655405632, guid: 5d181240031801e4382bd4eaf8bdcc4d, type: 3}
   shouldDissapear: 0
-  healthBarStore: {fileID: -611185769050290496, guid: 5d181240031801e4382bd4eaf8bdcc4d, type: 3}
+  healthBarPrefab: {fileID: -611185769050290496, guid: 5d181240031801e4382bd4eaf8bdcc4d, type: 3}
+  inventoryPrefab: {fileID: 8581479971190268671, guid: dcc897cca65fd9544a951380524d9dc3, type: 3}

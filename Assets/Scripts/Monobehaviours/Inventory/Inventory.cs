@@ -5,13 +5,13 @@ namespace RPG_Animation_Game
 {
     public class Inventory : MonoBehaviour
     {
-        public GameObject slotPrefab;
+        public GameObject slotPrefab;// this is the reference to the instantiated gameobject
         public const int numSlots = 5;
         Image[] itemImages = new Image[numSlots];
         Item[] items = new Item[numSlots];
         GameObject[] slots = new GameObject[numSlots];
 
-        private void Start()
+        private void Awake()
         {
             CreateSlots();
         }
@@ -33,7 +33,7 @@ namespace RPG_Animation_Game
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if(items[i] != null && items[i].itemType == itemToAdd.itemType && itemToAdd)
+                if (items[i] != null && items[i].itemType == itemToAdd.itemType && itemToAdd.stackable == true)
                 {
                     items[i].quantity = items[i].quantity + 1;
                     Slot slotScript = slots[i].gameObject.GetComponent<Slot>();
@@ -41,18 +41,18 @@ namespace RPG_Animation_Game
                     quantityText.enabled = true;
                     quantityText.text = items[i].quantity.ToString();
                     return true;
-
+                }
                     if(items[i] == null)
                     {
                         items[i] = Instantiate(itemToAdd);
                         items[i].quantity = 1;
-                        //itemImages[i].sprite = itemToAdd.sprite;
+                        itemImages[i].sprite = itemToAdd.sprite;
                         itemImages[i].enabled = true;
-                        //return true;
+                        return true;
                     }
                 }
-                //return false;
+                return false;
             }
         }
     }
-}
+
